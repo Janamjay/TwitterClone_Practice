@@ -2,6 +2,7 @@ import React from "react";
 import date from "./date.module.css";
 
 const DateSelector = () => {
+  
   const days = [...Array(31).keys()].map((day) => (
     <option key={day + 1} value={day + 1}>
       {day + 1}
@@ -27,7 +28,7 @@ const DateSelector = () => {
     </option>
   ));
 
-  const years = [...Array(32).keys()].map((year, index) => (
+  const years = [...Array(32).keys()].map((index) => (
     <option key={index} value={2022 - index}>
       {2022 - index}
     </option>
