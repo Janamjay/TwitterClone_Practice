@@ -56,7 +56,7 @@ export default function Feeds() {
   function handleOnNext() {
     setIsLoad(isLoad + 20);
   }
-  console.log(TweetData.filter((e,i) => e))
+  // console.log(TweetData.filter((e,i) => e))
   return (
     <>
       <div>
