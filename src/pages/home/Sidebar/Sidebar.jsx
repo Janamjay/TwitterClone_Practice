@@ -19,6 +19,7 @@ import { reRender } from "../../../atom/reRender";
 const Sidebar = () => {
   const navigate = useNavigate();
   const [showTweetBox, setShowTweetBox] = useState(false);
+  const [tweetMessage, setTweetMessage] = useState("");
   const [atomRender, setAtomRender] = useRecoilState(reRender);
 
   function handleTweet() {
@@ -30,7 +31,6 @@ const Sidebar = () => {
       reTweetCount: 0,
       isLike: false,
     };
-
     const oldTweetList = JSON.parse(localStorage.getItem("userTweetList"));
 
     if (oldTweetList) {
