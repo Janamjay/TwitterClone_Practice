@@ -24,14 +24,7 @@ const Login = () => {
   function handleLogin() {
     if (email.length === 0 || password.length === 0) {
       swal("Alert", "Please Fill the required Input Field!", "warning");
-    }
-    // const emailRegex = "/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/";
-    // const passwordRegex = "^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$";
-    // if (emailRegex.test(email) === false || passwordRegex.test(password)) {
-    //   swal("Alert", "Please Fill the required Input Field!", "warning");
-    // }
-    
-    else if (userList !== null) {
+    } else if (userList !== null) {
       const userFind = userList.find(
         (x) => x.userEmail === email && x.userPassword === password
       );
