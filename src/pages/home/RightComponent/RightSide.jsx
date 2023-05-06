@@ -110,11 +110,11 @@ export default function RightSide() {
             ))}
           </div>
           <div className={Right.btnPart}>
-          {filteredData.length > 2 && itemsToShow < filteredData.length ? (
-        <button onClick={showMore}>Show More</button>
-      ) : (
-        <button onClick={showLess}>Show Less</button>
-      )}
+            {filteredData.length > 3 && itemsToShow < filteredData.length ? (
+              <button onClick={showMore}>Show More</button>
+            ) : (
+              <button onClick={showLess}>Show Less</button>
+            )}
           </div>
         </section>
         <div>
