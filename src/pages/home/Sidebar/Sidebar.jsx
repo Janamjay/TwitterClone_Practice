@@ -30,6 +30,7 @@ const Sidebar = () => {
       reTweetCount: 0,
       isLike: false,
     };
+
     const oldTweetList = JSON.parse(localStorage.getItem("userTweetList"));
 
     if (oldTweetList) {
@@ -37,7 +38,7 @@ const Sidebar = () => {
         "userTweetList",
         JSON.stringify([newTweet, ...oldTweetList])
       );
-    } else {
+    } else if(newTweet.content.length>0) {
       localStorage.setItem("userTweetList", JSON.stringify([newTweet]));
     }
     setTweetMessage("");
