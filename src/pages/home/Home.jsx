@@ -5,7 +5,6 @@ import Sidebar from "./Sidebar/Sidebar";
 import RightSide from "./RightComponent/RightSide";
 import Feeds from "./Feeds/Feeds";
 import Tweet from "./Tweet/Tweet";
-// import Navbar from "./Sidebar/Navbar";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -21,7 +20,6 @@ const Home = () => {
     <div className="home_main">
       <div className="home_leftSide">
         <Sidebar />
-        {/* <Navbar/> */}
       </div>
       <div className="home_main_container">
         {/* TOPBAR of Home page */}
