@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import s2 from "./step2.module.css";
 import { Button, TextField } from "@mui/material";
 import { globalUserObj } from "../recoil";
@@ -7,26 +7,28 @@ import DateSelector from "./DateSelector";
 import swal from "sweetalert";
 
 const Step2 = (props) => {
-
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const[globalData,setGobalData]=useRecoilState(globalUserObj)
- 
-  function handleNext(){
-    if(!(name.length>=3)){
-      swal("Alert", "Name should be greater than 3 Character!!", "warning");
-    }else if(!(phone.length===10)){
+  const [globalData, setGobalData] = useRecoilState(globalUserObj);
+
+  function handleNext() {
+    const nameRegex = /^[a-zA-Z ]{3,30}$/;
+    const phoneRegex = /^(\+91|\+91\-|0)?[6789]\d{9}$/;
+
+    if (!name.match(nameRegex)) {
+      swal("Alert", "Name should be valid!!", "warning");
+    } else if (!phone.match(phoneRegex)) {
       swal("Alert", "Number should be valid!!", "warning");
+    } else {
+      const user = {
+        userFullName: name,
+        userPhone: phone,
+      };
+      setGobalData({ ...globalData, ...user });
+      props.onClick();
     }
-    else{ 
-      const user={
-      userFullName:name,userPhone:phone
-    }
-      setGobalData({...globalData,...user}); 
-      props.onClick()
-    } 
   }
-  
+
   return (
     <div className={s2.main_container}>
       <div className={s2.inner_container}>
@@ -82,29 +84,32 @@ const Step2 = (props) => {
           </div>
         </div>
         <div className={s2.next}>
-            <Button onClick={()=>{handleNext()}}
-              variant="contained"
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "20px",
-                backgroundColor: "grey",
-                color: "white",
-                outline: "none",
-                border: "none",
-                margin: "1rem 0",
-                width: "100%",
-                textTransform: "none",
-                fontSize: "1.2rem",
-                "&:hover": {
-                  backgroundColor: "black",
-                  color: "grey",
-                },
-              }}
-            >
-              Next
-            </Button>
+          <Button
+            onClick={() => {
+              handleNext();
+            }}
+            variant="contained"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "20px",
+              backgroundColor: "grey",
+              color: "white",
+              outline: "none",
+              border: "none",
+              margin: "1rem 0",
+              width: "100%",
+              textTransform: "none",
+              fontSize: "1.2rem",
+              "&:hover": {
+                backgroundColor: "black",
+                color: "grey",
+              },
+            }}
+          >
+            Next
+          </Button>
         </div>
       </div>
     </div>

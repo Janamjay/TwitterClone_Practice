@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import styles from "./Sidebar.module.css";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import HomeIcon from "@mui/icons-material/Home";
@@ -10,18 +10,19 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router";
-import { Dialog, DialogContent} from "@mui/material";
-import UserLogout from '../Logout/UserLogout'
+import { Dialog, DialogContent } from "@mui/material";
+import UserLogout from "../Logout/UserLogout";
 import Tweet from "../Tweet/Tweet";
 import { useRecoilState } from "recoil";
 import { reRender } from "../../../atom/reRender";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const [showTweetBox, setShowTweetBox] = useState(false); const [atomRender, setAtomRender] = useRecoilState(reRender);
+  const [showTweetBox, setShowTweetBox] = useState(false);
+  const [atomRender, setAtomRender] = useRecoilState(reRender);
 
   function handleTweet() {
-    setShowTweetBox(true)
+    setShowTweetBox(true);
     const newTweet = {
       content: tweetMessage,
       likeCount: 0,
@@ -38,7 +39,6 @@ const Sidebar = () => {
       );
     } else {
       localStorage.setItem("userTweetList", JSON.stringify([newTweet]));
-     
     }
     setTweetMessage("");
     setAtomRender(!atomRender);
@@ -47,7 +47,6 @@ const Sidebar = () => {
   function handleNavigate(path) {
     navigate(path);
   }
-
 
   return (
     <>
@@ -151,14 +150,14 @@ const Sidebar = () => {
           <Dialog open={showTweetBox} onClose={() => setShowTweetBox(false)}>
             <DialogContent
               sx={{
-                height: "300px",
+                height: "180px",
                 width: "500px",
               }}
             >
               <Tweet />
             </DialogContent>
           </Dialog>
-            <UserLogout/>
+          <UserLogout />
         </div>
       </div>
     </>
