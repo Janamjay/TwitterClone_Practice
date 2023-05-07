@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Avatar, Button } from "@mui/material";
 import PermMediaOutlinedIcon from "@mui/icons-material/PermMediaOutlined";
 import GifBoxOutlinedIcon from "@mui/icons-material/GifBoxOutlined";
@@ -26,12 +26,12 @@ export default function Tweet() {
 
     const oldTweetList = JSON.parse(localStorage.getItem("userTweetList"));
 
-    if (oldTweetList ) {
+    if (oldTweetList && newTweet.content.length > 0) {
       localStorage.setItem(
         "userTweetList",
         JSON.stringify([newTweet, ...oldTweetList])
       );
-    } else if (newTweet.content.length>0){
+    } else if (newTweet.content.length > 0) {
       localStorage.setItem("userTweetList", JSON.stringify([newTweet]));
     }
     setTweetMessage("");

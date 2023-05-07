@@ -33,7 +33,7 @@ const Sidebar = () => {
     };
     const oldTweetList = JSON.parse(localStorage.getItem("userTweetList"));
 
-    if (oldTweetList) {
+    if (oldTweetList && newTweet.content.length>0) {
       localStorage.setItem(
         "userTweetList",
         JSON.stringify([newTweet, ...oldTweetList])
