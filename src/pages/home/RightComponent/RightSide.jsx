@@ -64,7 +64,7 @@ export default function RightSide() {
   };
 
   const showLess = () => {
-    setItemsToShow(2);
+    setItemsToShow(3);
   };
 
   const filteredData = data.filter((item) => !notInterested.includes(item.id));
